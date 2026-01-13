@@ -19,12 +19,13 @@ from django.urls import path
 
 
 
-from doctorApp.views import *
-from pacienteApp.views import *
-from reservasApp.views import *
+
+from pacienteApp.views import registro_paciente, login_paciente, ver_post_paciente
+from reservasApp.views import subir_reserva
 
 urlpatterns = [
     path('pacientes/registro_paciente/', registro_paciente, name='registro_paciente'),
     path('pacientes/login_paciente/', login_paciente, name='login_paciente'),
-
+    path('reserva/subir_reserva/', subir_reserva, name='subir_reserva'),
+    path('paciente/home/<int:id_paciente>/', ver_post_paciente, name='ver_post_paciente')
 ]

@@ -31,10 +31,8 @@ constructor(
       next : (respuesta) =>{
           console.log("respuesta: ", respuesta)
 
-          localStorage.setItem('usuario_nombre', respuesta.nombre)
-          localStorage.setItem('usuario_rol', respuesta.rol)
-
-          this.router.navigate(['/home_paciente'])
+          
+          this.router.navigate(['/home_paciente'], {queryParams: {nombre: this.paciente_log.nombre, id: this.paciente_log.id}})
       },
       error : (e) =>{
         console.log("error al hacer login: ", e)

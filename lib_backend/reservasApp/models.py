@@ -11,7 +11,12 @@ class reservas(models.Model):
     
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE, related_name='mis_reservas')
 
-    estado = models.CharField(max_length=20, default='PENDIENTE')
+    doctor = models.ForeignKey(Doctor, on_delete=models.SET_NULL , null=True, blank=True, related_name='citas_asignadas')
+    
+
+    estado = models.CharField(max_length=20, default='pendiente')
+
+    nombre_paciente = models.CharField(max_length=40)
 
     def __str__(self):
         return f"Reserva {self.id} - Paciente: {self.paciente.nombre} | estado: {self.estado}"

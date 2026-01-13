@@ -1,1 +1,10 @@
-<h1>home paciente</h1>
+<h1>bienvenido de nuevo {{ nombreUsuario }}</h1>
+
+<p>tu id es {{ id_param }}</p>
+
+@for (po of lista_post; track $index) {
+    <p>id: {{ po.id }} | estado: {{ po.estado }} | nombre de paciente: {{ po.nombre_paciente }} | fecha de creacion : {{ po.fecha_creacion }}</p>
+}
+
+<button (click)="salir()">salir</button>
+<button (click)="enviar_id_reserva()">subir post de reserva</button>

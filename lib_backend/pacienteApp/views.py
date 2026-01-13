@@ -6,7 +6,8 @@ from .models import Paciente
 from .serializer import paciente_serializer 
 from rest_framework.permissions import AllowAny
 from django.contrib.auth.hashers import check_password
-
+from reservasApp.models import  reservas
+from reservasApp.serializer import reserva_serializer
 
 @csrf_exempt
 @api_view(['POST'])
@@ -32,15 +33,26 @@ def login_paciente(request):
 
     try:
         #filtro con el id
-        Paciente = Paciente.objects.get(id=id_api)
+        paciente = Paciente.objects.get(id=id_api)
 
-        if check_password(contrasena_api, Paciente.contrasena):
+        if check_password(contrasena_api, paciente.contrasena):
             return Response({
-                'id': Paciente.id,
-                'nombre': Paciente.nombre,
-                'rol': Paciente.rol
+                'id': paciente.id,
+                'nombre': paciente.nombre,
             }, status=status.HTTP_200_OK)
         else: 
             return Response(status=status.HTTP_401_UNAUTHORIZED)
-    except Paciente.DoesNotExist:
+    except paciente.DoesNotExist:
         return Response({'usuario no encontrado: '}, status=status.HTTP_404_NOT_FOUND)
+    
+
+@csrf_exempt
+@api_view(['GET'])
+@permission_classes([AllowAny]) # Esto quita el error 403
+def ver_post_paciente(request, id_paciente):
+    reservas_ap = reservas.objects.filter(id=id_paciente).order_by('-fecha_creacion')
+
+    serializer_reserva = reserva_serializer(reservas_ap, many=True)
+    return Response(serializer_reserva.data, status=status.HTTP_200_OK)
+    
+
