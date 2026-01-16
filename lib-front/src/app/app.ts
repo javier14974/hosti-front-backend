@@ -7,7 +7,7 @@ import { SubirReserva } from './components/subir-reserva/subir-reserva';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RegistrarPaciente, LoginPaciente, HomePaciente, SubirReserva],
+  imports: [RouterOutlet, RouterLink, RegistrarPaciente, LoginPaciente, HomePaciente, SubirReserva, ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

@@ -10,5 +10,6 @@ export const routes: Routes = [
   {path: 'registrar_paciente', component: RegistrarPaciente},
   {path:'login_paciente', component: LoginPaciente},
   {path: 'home_paciente', component: HomePaciente},
+  {path: 'reserva/:id', component: SubirReserva},
   {path: 'reserva', component: SubirReserva},
 ];

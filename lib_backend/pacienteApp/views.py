@@ -50,7 +50,7 @@ def login_paciente(request):
 @api_view(['GET'])
 @permission_classes([AllowAny]) # Esto quita el error 403
 def ver_post_paciente(request, id_paciente):
-    reservas_ap = reservas.objects.filter(id=id_paciente).order_by('-fecha_creacion')
+    reservas_ap = reservas.objects.filter(paciente_id=id_paciente).order_by('-fecha_creacion')
 
     serializer_reserva = reserva_serializer(reservas_ap, many=True)
     return Response(serializer_reserva.data, status=status.HTTP_200_OK)

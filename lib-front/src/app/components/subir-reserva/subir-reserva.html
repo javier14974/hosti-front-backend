@@ -1,16 +1,33 @@
 <h1>subir reserva</h1>
 <p>tu id es {{ reserva_nuevo.paciente }}</p>
+@if(editar === true){
+    <p>editar xd</p>
+    <form>
+        <input type="text" placeholder="cambiar nombre del paciente" [(ngModel)]="reserva_nuevo.nombre_paciente" name="nombre"/>
+        <span>no nesesariamente tiene que ser el dueño de la cuenta</span>
+        <br><br>
 
-<form>
-    <input type="text" placeholder="nombre de paciente" [(ngModel)]="reserva_nuevo.nombre_paciente" name="nombre"/>
-    <span>no nesesariamente tiene que ser el dueño de la cuenta</span>
-    <br><br>
-
-    <textarea placeholder="Describe tu dolor con detalle..." [(ngModel)]="reserva_nuevo.descripcion_dolor" name="descripcion_dolor"rows="5" class="cuadro-grande"></textarea>
-    <br><br>
+        <textarea placeholder="cambiar el dolor" [(ngModel)]="reserva_nuevo.descripcion_dolor" name="descripcion_dolor"rows="5" class="cuadro-grande"></textarea>
+        <br><br>
 
 
-    <button (click)="subir_reserva()">enviar datos</button>
-    <br>
+        <button (click)="editar_reserva()">editar datos</button>
+        <br>
 
-</form>
+    </form>
+
+}@else if(editar === false){
+    <form>
+        <input type="text" placeholder="nombre de paciente" [(ngModel)]="reserva_nuevo.nombre_paciente" name="nombre"/>
+        <span>no nesesariamente tiene que ser el dueño de la cuenta</span>
+        <br><br>
+
+        <textarea placeholder="Describe tu dolor con detalle..." [(ngModel)]="reserva_nuevo.descripcion_dolor" name="descripcion_dolor"rows="5" class="cuadro-grande"></textarea>
+        <br><br>
+
+
+        <button (click)="subir_reserva()">enviar datos</button>
+        <br>
+
+    </form>
+}

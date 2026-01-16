@@ -12,7 +12,9 @@ import { Reserva } from "../models/reserva.models";
 export class Api_services_paciente{
     private login_url = 'http://127.0.0.1:8000/pacientes/login_paciente/';
     private registro_url = 'http://127.0.0.1:8000/pacientes/registro_paciente/';
-    private ver_post_url = 'http://127.0.0.1:8000/paciente/home/'
+    private ver_post_url = 'http://127.0.0.1:8000/paciente/home/';
+    private eliminar_post_url = 'http://127.0.0.1:8000/reserva/eliminar_reserva_usuario/';
+    private editar_post_url = 'http://127.0.0.1:8000/reserva/editar_post/';
 
     constructor(private http: HttpClient){ }
 
@@ -26,6 +28,14 @@ export class Api_services_paciente{
     }
     ver_tus_post(id_paciente : number){
         return this.http.get<Reserva[]>(this.ver_post_url + id_paciente + '/');
+    }
+
+    eliminar_post(id_reserva : number){
+        return this.http.delete<any>(this.eliminar_post_url+ id_reserva+ '/');
+    }
+
+    editar_post(id_reserva : number, data: Reserva){
+        return this.http.put(this.editar_post_url + id_reserva + '/', data);
     }
 }
 
