@@ -4,6 +4,7 @@ export class Doctor{
         public nombre: string = '',
         public contrasena: string = '',
         public edad : number = 0,
-        public gmail: string = ''
+        public gmail: string = '',
+        public ocupacion: string = ''
     ) {}
 }

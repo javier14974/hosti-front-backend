@@ -1,12 +1,44 @@
-<h1>bienvenido de nuevo {{ nombreUsuario }}</h1>
-<h2>tus post subidos hasta ahora son los siguientes: </h2>
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="user-info">
+      <h1>Bienvenido de nuevo, <span>{{ nombreUsuario }}</span></h1>
+      <p class="id-badge">ID de Paciente: #{{ id_paciente }}</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn-post" (click)="enviar_id_reserva()">+ Subir post de reserva</button>
+      <button class="btn-logout" (click)="salir()">Cerrar Sesión</button>
+    </div>
+  </header>
 
-<p>tu id es {{ id_param }}</p>
+  <section class="posts-section">
+    <h2>Mis publicaciones recientes</h2>
 
-@for (po of lista_post; track $index) {
-    <p>id: {{ po.id }} | estado: {{ po.estado }} | nombre de paciente: {{ po.nombre_paciente }} | descripcion_dolor : {{ po.descripcion_dolor }} | fecha de creacion : {{ po.fecha_creacion }} </p>
-    <button (click)="eliminar_post(po.id)">borrar</button> <button (click)="editar_post(po.id)">editar</button>
-}
-<br><br>
-<button (click)="salir()">salir</button>
-<button (click)="enviar_id_reserva()">subir post de reserva</button>
+    <div class="posts-grid">
+      @for (po of lista_post; track po.id) {
+        <div class="post-card">
+          <div class="post-status" [attr.data-status]="po.estado">
+            {{ po.estado }}
+          </div>
+          
+          <div class="post-body">
+            <h3>{{ po.descripcion_dolor }}</h3>
+            <p><strong>Paciente:</strong> {{ po.nombre_paciente }}</p>
+            <p class="post-date">📅 {{ po.fecha_creacion }}</p>
+            <small>ID de Registro: {{ po.id }}</small>
+          </div>
+
+          <div class="post-actions">
+            <button class="btn-edit" (click)="editar_post(po.id)">Editar</button>
+            <button class="btn-delete" (click)="eliminar_post(po.id)">Borrar</button>
+          </div>
+        </div>
+      }
+    </div>
+    
+    @if (lista_post.length === 0) {
+      <div class="empty-state">
+        <p>Aún no has subido ningún post.</p>
+      </div>
+    }
+  </section>
+</div>

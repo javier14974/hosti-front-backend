@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Api_services_paciente } from '../../../services/api_paciente.services';
 import { Paciente } from '../../../models/paciente.models';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-registrar-paciente',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './registrar-paciente.html',
   styleUrl: './registrar-paciente.css',
 })

@@ -15,6 +15,7 @@ export class Api_services_paciente{
     private ver_post_url = 'http://127.0.0.1:8000/paciente/home/';
     private eliminar_post_url = 'http://127.0.0.1:8000/reserva/eliminar_reserva_usuario/';
     private editar_post_url = 'http://127.0.0.1:8000/reserva/editar_post/';
+    public idUsuario : number = 0;
 
     constructor(private http: HttpClient){ }
 
@@ -24,6 +25,7 @@ export class Api_services_paciente{
 
     login_paciente_api(id: number, nombre: string, contrasena: string){
         const envio = {id: id, nombre: nombre, contrasena: contrasena}
+        this.idUsuario = id;
         return this.http.post<any>(this.login_url, envio);
     }
     ver_tus_post(id_paciente : number){

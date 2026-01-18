@@ -1,20 +1,31 @@
-<h1>login paciente</h1>
+<div class="login-container">
+  <div class="login-card">
+    <h2>Bienvenido a Hosti</h2>
+    <p class="subtitle">Ingresa tus credenciales para continuar</p>
 
-<form >
-    <input type="number" placeholder="id" [(ngModel)]="paciente_log.id" name="id"/>
-    <br><br>
+    <form class="login-form">
+      <div class="input-group">
+        <input type="number" placeholder="ID de Usuario" [(ngModel)]="paciente_log.id" name="id" required />
+      </div>
 
-    <input type="text" name="nombre" [(ngModel)]="paciente_log.nombre" placeholder="nombre">
-    <br><br>
+      <div class="input-group">
+        <input type="text" name="nombre" [(ngModel)]="paciente_log.nombre" placeholder="Nombre completo" required>
+      </div>
 
-    <input type="password" name="contrasena" [(ngModel)]="paciente_log.contrasena" placeholder="Contraseña">
-    <br><br>
+      <div class="input-group">
+        <input type="password" name="contrasena" [(ngModel)]="paciente_log.contrasena" placeholder="Contraseña" required>
+      </div>
 
-    <button (click)="login()">enviar datos</button>
-    <br>
-    <p>{{ error_login }}</p>
+      <button class="btn-primary" (click)="login()">Iniciar Sesión</button>
+      
+      <p class="error-message" *ngIf="error_login">{{ error_login }}</p>
 
-    <button routerLink="">ir a login doctor</button>
-    <button routerLink="/registrar_paciente">no tienes cuenta registrate ya</button>
-</form>
+      <div class="divider"></div>
 
+      <div class="extra-actions">
+        <button type="button" class="btn-secondary" routerLink="/login_doctor">Soy Doctor</button>
+        <button type="button" class="btn-link" routerLink="/registrar_paciente">¿No tienes cuenta? Regístrate</button>
+      </div>
+    </form>
+  </div>
+</div>

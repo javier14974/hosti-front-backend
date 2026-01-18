@@ -3,6 +3,9 @@ import { RegistrarPaciente } from './components/paciente/registrar-paciente/regi
 import { LoginPaciente } from './components/paciente/login-paciente/login-paciente';
 import { HomePaciente } from './components/paciente/home-paciente/home-paciente';
 import { SubirReserva } from './components/subir-reserva/subir-reserva';
+import { HomeDoctor } from './components/doctor/home-doctor/home-doctor';
+import { RegistrarDoctor } from './components/doctor/registrar-doctor/registrar-doctor';
+import { LoginDoctor } from './components/doctor/login-doctor/login-doctor';
 
 
 export const routes: Routes = [
@@ -12,4 +15,7 @@ export const routes: Routes = [
   {path: 'home_paciente', component: HomePaciente},
   {path: 'reserva/:id', component: SubirReserva},
   {path: 'reserva', component: SubirReserva},
+  {path: 'home_doctor', component: HomeDoctor},
+  {path: 'registrar_doctor', component: RegistrarDoctor},
+  {path: 'login_doctor', component: LoginDoctor},
 ];

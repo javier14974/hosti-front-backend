@@ -18,5 +18,4 @@ export class Api_services_reserva{
         return this.http.post<Paciente>(this.subir_reservas_url, reserva);
     }
 
-
 }

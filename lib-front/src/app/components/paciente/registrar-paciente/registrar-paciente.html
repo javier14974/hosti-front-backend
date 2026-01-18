@@ -1,23 +1,36 @@
-<h1>registro de paciente</h1>
+<div class="register-container">
+  <div class="register-card">
+    <div class="header">
+      <h2>Crear Cuenta</h2>
+      <p>Regístrate para gestionar tus citas médicas</p>
+    </div>
 
-<form >
-    <input type="text" placeholder="nombre" [(ngModel)]="paciente_nuevo.nombre" name="nombre"/>
-    <span>{{ nombre_error }}</span>
-    <br><br>
+    <form class="register-form">
+      <div class="input-group">
+        <input type="text" placeholder="Nombre completo" [(ngModel)]="paciente_nuevo.nombre" name="nombre" required />
+        <span class="error-text" *ngIf="nombre_error">{{ nombre_error }}</span>
+      </div>
 
-    <input type="email" name="gmail" [(ngModel)]="paciente_nuevo.gmail" placeholder="Correo electrónico">
-    <br><br>
+      <div class="input-group">
+        <input type="email" name="gmail" [(ngModel)]="paciente_nuevo.gmail" placeholder="Correo electrónico" required>
+      </div>
 
-    <p>edad</p>
-    <input type="number" name="edad" [(ngModel)]="paciente_nuevo.edad" placeholder="edad">
-    <br><br>
+      <div class="input-group">
+        <label for="edad">Edad del paciente</label>
+        <input type="number" id="edad" name="edad" [(ngModel)]="paciente_nuevo.edad" placeholder="Ej: 25">
+      </div>
 
-    <input type="password" name="contrasena" [(ngModel)]="paciente_nuevo.contrasena" placeholder="Contraseña">
-    <br><br>
+      <div class="input-group">
+        <input type="password" name="contrasena" [(ngModel)]="paciente_nuevo.contrasena" placeholder="Contraseña segura" required>
+      </div>
 
-    <button (click)="registrar()">enviar datos</button>
-    <br>
-    <br>
-    <button routerLink="/login_paciente">ya tengo cuenta</button>
-</form>
+      <button class="btn-primary" (click)="registrar()">Registrar Paciente</button>
 
+      <div class="divider"></div>
+
+      <button type="button" class="btn-secondary" routerLink="/login_paciente">
+        ¿Ya tienes cuenta? Inicia sesión
+      </button>
+    </form>
+  </div>
+</div>

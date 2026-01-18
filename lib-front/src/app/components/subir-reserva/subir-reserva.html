@@ -1,33 +1,50 @@
-<h1>subir reserva</h1>
-<p>tu id es {{ reserva_nuevo.paciente }}</p>
-@if(editar === true){
-    <p>editar xd</p>
-    <form>
-        <input type="text" placeholder="cambiar nombre del paciente" [(ngModel)]="reserva_nuevo.nombre_paciente" name="nombre"/>
-        <span>no nesesariamente tiene que ser el dueño de la cuenta</span>
-        <br><br>
+<div class="reserva-container">
+  <div class="reserva-card" [class.edit-mode]="editar">
+    
+    <header class="reserva-header">
+      <div class="badge">ID Paciente: {{ id_paciente }}</div>
+      <h1>{{ editar ? 'Actualizar Reserva' : 'Nueva Reserva Médica' }}</h1>
+      <p class="subtitle">Complete los detalles para que el doctor pueda revisarlos.</p>
+    </header>
 
-        <textarea placeholder="cambiar el dolor" [(ngModel)]="reserva_nuevo.descripcion_dolor" name="descripcion_dolor"rows="5" class="cuadro-grande"></textarea>
-        <br><br>
+    @if(editar){
+      <form class="reserva-form">
+        <div class="input-group">
+          <label>Nombre del Paciente</label>
+          <input type="text" placeholder="Ej: Juan Pérez" [(ngModel)]="reserva_nuevo.nombre_paciente" name="nombre"/>
+          <small class="helper-text">Puede ser un familiar o el dueño de la cuenta.</small>
+    
+        </div>
 
-
-        <button (click)="editar_reserva()">editar datos</button>
-        <br>
-
-    </form>
-
-}@else if(editar === false){
-    <form>
-        <input type="text" placeholder="nombre de paciente" [(ngModel)]="reserva_nuevo.nombre_paciente" name="nombre"/>
-        <span>no nesesariamente tiene que ser el dueño de la cuenta</span>
-        <br><br>
-
-        <textarea placeholder="Describe tu dolor con detalle..." [(ngModel)]="reserva_nuevo.descripcion_dolor" name="descripcion_dolor"rows="5" class="cuadro-grande"></textarea>
-        <br><br>
+        <div class="input-group">
+          <label>Descripción del Malestar</label>
+          <textarea placeholder="Describe el dolor con detalle..." [(ngModel)]="reserva_nuevo.descripcion_dolor" name="descripcion_dolor" rows="5"></textarea>
+        </div>
 
 
-        <button (click)="subir_reserva()">enviar datos</button>
-        <br>
 
-    </form>
-}
+        <button class="btn-primary btn-edit" (click)="editar_reserva()">
+          <span class="icon">💾</span> Guardar Cambios
+        </button>
+      </form>
+
+    } @else {
+      <form class="reserva-form">
+        <div class="input-group">
+          <label>Nombre del Paciente</label>
+          <input type="text" placeholder="Nombre completo" [(ngModel)]="reserva_nuevo.nombre_paciente" name="nombre"/>
+          <small class="helper-text">No necesariamente el dueño de la cuenta.</small>
+        </div>
+
+        <div class="input-group">
+          <label>¿Qué síntomas presenta?</label>
+          <textarea placeholder="Ej: Dolor abdominal desde hace 2 días..." [(ngModel)]="reserva_nuevo.descripcion_dolor" name="descripcion_dolor" rows="5"></textarea>
+        </div>
+
+        <button class="btn-primary" (click)="subir_reserva()">
+          <span class="icon">🚀</span> Enviar Reserva
+        </button>
+      </form>
+    }
+  </div>
+</div>

@@ -1,0 +1,124 @@
+.reserva-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: #f4f7f6;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.reserva-card {
+  background: white;
+  width: 100%;
+  max-width: 550px;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+  border-top: 6px solid #00b894; /* Color verde para nueva reserva */
+  transition: all 0.4s ease;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Cambio de color si está en modo edición */
+.reserva-card.edit-mode {
+  border-top-color: #0984e3; /* Azul para edición */
+}
+
+.reserva-header {
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.badge {
+  display: inline-block;
+  background: #e8f0fe;
+  color: #1a73e8;
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+h1 { font-size: 1.6rem; color: #2d3436; margin: 0; }
+.subtitle { color: #636e72; font-size: 0.9rem; margin-top: 5px; }
+
+/* Formulario */
+.input-group {
+  margin-bottom: 25px;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+  color: #2d3436;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #edf2f7;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
+  background: #fdfdfd;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #00b894;
+  box-shadow: 0 0 0 4px rgba(0, 184, 148, 0.1);
+}
+
+.helper-text {
+  display: block;
+  margin-top: 6px;
+  color: #95a5a6;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* Botones */
+.btn-primary {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  background: #00b894;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.btn-primary:hover {
+  background: #00a181;
+  transform: translateY(-2px);
+}
+
+.btn-edit {
+  background: #0984e3;
+}
+
+.btn-edit:hover {
+  background: #0873c4;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .reserva-card { padding: 25px; }
+}

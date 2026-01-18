@@ -1,0 +1,118 @@
+:host {
+  --primary: #4361ee;
+  --danger: #ef233c;
+  --success: #2ec4b6;
+  --bg: #f8f9fa;
+  --text: #2b2d42;
+}
+
+.dashboard-container {
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  color: var(--text);
+  background-color: var(--bg);
+  min-height: 100vh;
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.dashboard-header h1 span { color: var(--primary); }
+.id-badge {
+  background: #dee2e6;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* Grid de Posts */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Tarjeta de Post */
+.post-card {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  animation: slideIn 0.5s ease forwards;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Etiquetas de Estado */
+.post-status {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 15px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  background: #ced4da;
+  border-bottom-left-radius: 10px;
+}
+
+.post-status[data-status="pendiente"] { background: #ffd166; }
+.post-status[data-status="completado"] { background: var(--success); color: white; }
+
+/* Botones */
+.header-actions { display: flex; gap: 10px; }
+
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-post { background: var(--primary); color: white; }
+.btn-logout { background: #8d99ae; color: white; }
+
+.post-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.btn-edit { background: #e0e7ff; color: var(--primary); flex: 1; }
+.btn-delete { background: #fee2e2; color: var(--danger); flex: 1; }
+
+button:hover { opacity: 0.8; }
+
+/* Animación */
+@keyframes slideIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 600px) {
+  .dashboard-header { flex-direction: column; text-align: center; }
+}
